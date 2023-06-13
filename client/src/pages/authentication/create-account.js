@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { searchUsername } from "../../api/userApi";
 
 const CreateAccount = ({auth}) => {
     const [createSuccess, setCreateSuccess] = useState(true);
@@ -9,10 +10,17 @@ const CreateAccount = ({auth}) => {
         let email = document.querySelector("#email").value;
         let password = document.querySelector("#password").value;
         let username = document.querySelector("#username").value;
+
         if (email != "" && password != "" && username != "" && username.length >= 2) {
+            let usernameSearch = await searchUsername(username)
+            if (usernameSearch.length > 0) {
+                setErrors("Username already taken.")
+                return
+            }
             try {
                 const user = await createUserWithEmailAndPassword(auth, email, password);
-                //send display name to DB with uid
+                await createAccount(user.user.uid, username)
+                user.user.displayName = username
                 window.location.href = "/home"
             }
             catch (err) {
