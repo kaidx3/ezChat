@@ -12,16 +12,16 @@ const CreateAccount = ({auth}) => {
         let username = document.querySelector("#username").value;
 
         if (email != "" && password != "" && username != "" && username.length >= 2) {
-            let usernameSearch = await searchUsername(username)
+            let usernameSearch = await searchUsername(username);
             if (usernameSearch.length > 0) {
-                setErrors("Username already taken.")
-                return
+                setErrors("Username already taken.");
+                return;
             }
             try {
                 const user = await createUserWithEmailAndPassword(auth, email, password);
-                await createAcountDB(user.user.uid, username)
-                user.user.displayName = username
-                window.location.href = "/home"
+                await createAcountDB(user.user.uid, username);
+                user.user.displayName = username;
+                window.location.href = "/home";
             }
             catch (err) {
                 setCreateSuccess(false);
@@ -34,7 +34,7 @@ const CreateAccount = ({auth}) => {
             }
         }
         else if (username.length < 2 && email != "" && password != "" && username != "") {
-            setCreateSuccess(false)
+            setCreateSuccess(false);
             setErrors("Username must be at least 2 chars long.");
         }
         else {

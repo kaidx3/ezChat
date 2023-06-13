@@ -1,3 +1,3 @@
-const apiLink = 'http://localhost:3000'
+const apiLink = 'http://localhost:3000';
 
-export {apiLink}
+export {apiLink};

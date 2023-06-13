@@ -1,6 +1,6 @@
 import express from 'express';
-import sql from 'mssql'
-import cors from 'cors'
+import sql from 'mssql';
+import cors from 'cors';
 
 const sqlConfig = {
     user: "sa",
@@ -14,18 +14,18 @@ const sqlConfig = {
     }
 }
 
-const pool = new sql.ConnectionPool(sqlConfig)
+const pool = new sql.ConnectionPool(sqlConfig);
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 //routes
-import { router as user } from './routes/user.js'
-app.use('/user', user)
+import { router as user } from './routes/user.js';
+app.use('/user', user);
 
 app.listen(3000, async () => {
-    await pool.connect()
-    app.set("db", pool)
-    console.log('Listening on port 3000.')
+    await pool.connect();
+    app.set("db", pool);
+    console.log('Listening on port 3000.');
 });
