@@ -22,7 +22,7 @@ const ResetPassword = ({auth}) => {
     }
 
     return (
-        <div class="centered-mw-40rem">
+    <div class="centered-mw-40rem">
         <h1 class="text-center mt-10rem">Reset Password</h1>
 
         {

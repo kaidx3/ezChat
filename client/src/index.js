@@ -21,6 +21,7 @@ import ResetPassword from './pages/authentication/reset-password';
 
 //Main Pages
 import Home from './pages/main/home';
+import CreateChat from './pages/main/create-chat';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -45,7 +46,11 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home/>,
-  }
+  },
+  {
+    path: "/create-chat",
+    element: <CreateChat/>,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
