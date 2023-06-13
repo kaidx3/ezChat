@@ -10,7 +10,7 @@ router.get('/searchUsername', async (req, res) => {
 
 router.post('/createAccount', async (req, res) => {
     let pool = req.app.get("db")
-    let data = await createAccount(pool, req.body.uid, req.body.username)
+    await createAccount(pool, req.body.uid, req.body.username)
     res.json({ submitted: true })
 })
 

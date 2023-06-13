@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { searchUsername } from "../../api/userApi";
+import { searchUsername, createAccount as createAcountDB } from "../../api/userApi";
 
 const CreateAccount = ({auth}) => {
     const [createSuccess, setCreateSuccess] = useState(true);
@@ -19,7 +19,7 @@ const CreateAccount = ({auth}) => {
             }
             try {
                 const user = await createUserWithEmailAndPassword(auth, email, password);
-                await createAccount(user.user.uid, username)
+                await createAcountDB(user.user.uid, username)
                 user.user.displayName = username
                 window.location.href = "/home"
             }

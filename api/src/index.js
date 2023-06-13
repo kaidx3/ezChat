@@ -1,5 +1,6 @@
 import express from 'express';
 import sql from 'mssql'
+import cors from 'cors'
 
 const sqlConfig = {
     user: "sa",
@@ -15,6 +16,9 @@ const sqlConfig = {
 
 const pool = new sql.ConnectionPool(sqlConfig)
 const app = express();
+
+app.use(cors());
+app.use(express.json());
 
 //routes
 import { router as user } from './routes/user.js'

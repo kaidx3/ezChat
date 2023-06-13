@@ -7,7 +7,8 @@ const searchUsername = async (username) => {
 }
 
 const createAccount = async (uid, username) => {
-    let results = await fetch(`${apiLink}/user/createUser`, {
+    console.log("create account")
+    let results = await fetch(`${apiLink}/user/createAccount`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -19,4 +20,4 @@ const createAccount = async (uid, username) => {
     return data
 }
 
-export {searchUsername}
+export {searchUsername, createAccount}

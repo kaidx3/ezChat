@@ -22,3 +22,7 @@ CREATE TABLE Message (
     ChatID INT FOREIGN KEY REFERENCES Chat(ChatID) NOT NULL,
     TimeSent DATETIME NOT NULL,
 )
+
+SELECT * FROM Account
+
+ 
