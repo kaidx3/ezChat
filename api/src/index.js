@@ -27,6 +27,9 @@ app.use('/user', user);
 import { router as chat } from './routes/chat.js';
 app.use('/chat', chat);
 
+import { router as message } from './routes/message.js';
+app.use('/message', message);
+
 app.listen(3000, async () => {
     await pool.connect();
     app.set("db", pool);

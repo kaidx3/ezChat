@@ -22,6 +22,7 @@ import ResetPassword from './pages/authentication/reset-password';
 //Main Pages
 import Home from './pages/main/home';
 import CreateChat from './pages/main/create-chat';
+import Conversation from './pages/main/conversation';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
     path: "/create-chat",
     element: <CreateChat auth={auth}/>,
   },
+  {
+    path: "/conversation",
+    element: <Conversation auth={auth}/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -64,6 +69,9 @@ root.render(
 //checks if user is logged in or not
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    if (window.location.pathname == "/" || window.location.pathname == "/login" || window.location.pathname == "/create-account") {
+      window.location.href = "/home";
+    }
   } else {
     if (window.location.pathname != "/" && window.location.pathname != "/login" && window.location.pathname != "/create-account" && window.location.pathname != "/reset-password") {
       window.location.href = "/";

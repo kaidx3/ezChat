@@ -23,6 +23,16 @@ CREATE TABLE Message (
     TimeSent DATETIME NOT NULL,
 )
 
+SELECT * FROM ChatAccount WHERE ChatID = 22
 SELECT * FROM Account
+SELECT * FROM Chat
+
+SELECT MessageContent, MAX(TimeSent) 'TimeSent' FROM Message
+WHERE ChatID = 21
+GROUP BY MessageContent, ChatID
+
+insert into Message (MessageContent, ChatID, TimeSent)
+VALUES ('reeeeeeeeeeeeeeeeeeeeeeeeeeeee', 21, GETDATE())
+
 
  
