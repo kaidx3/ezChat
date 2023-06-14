@@ -21,4 +21,15 @@ const createAccount = async (pool, uid, username) => {
     }
 }
 
-export {searchUsername, createAccount};
+const searchUid = async (pool, uid) => {
+    try {
+        let connection = pool.request();
+        let data = await connection.query`
+        SELECT Username FROM Account
+        WHERE AccountID = ${uid}`;
+        return data;
+    } catch (err) {
+    }
+}
+
+export {searchUsername, createAccount, searchUid};

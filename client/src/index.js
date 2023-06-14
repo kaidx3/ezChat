@@ -45,11 +45,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home/>,
+    element: <Home auth={auth}/>,
   },
   {
     path: "/create-chat",
-    element: <CreateChat/>,
+    element: <CreateChat auth={auth}/>,
   },
 ]);
 

@@ -19,4 +19,10 @@ const createAccount = async (uid, username) => {
     return data;
 }
 
-export {searchUsername, createAccount}
+const searchUid = async (uid) => {
+    let results = await fetch(`${apiLink}/user/searchUid/?uid=${uid}`);
+    let data = results.json();
+    return data;
+}
+
+export {searchUsername, createAccount, searchUid}

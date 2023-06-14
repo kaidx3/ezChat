@@ -212,6 +212,10 @@ code {
   margin-left: auto;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .header .content {
   z-index: 10;
   padding: 1.5rem;
@@ -247,6 +251,7 @@ code {
   text-decoration: none;
   border: none;
   padding: 0px;
+  cursor: pointer;
 }
 
 .header p {
@@ -297,11 +302,24 @@ code {
 
 .member-list p {
   font-weight: 500;
-  margin-left: 1.5rem;
 }
 
 .ms-1rem {
   margin-left: 1rem;
+}
+
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.justify-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.gap-1 {
+  gap: 1rem;
 }
 
 @media screen and (min-width: 800px) {
