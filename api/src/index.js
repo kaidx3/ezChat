@@ -11,8 +11,8 @@ const sqlConfig = {
   server: "143.110.209.44",
   port: 1433,
   options: {
-    encrypt: true, // for azure
-    trustServerCertificate: true // change to true for local dev / self-signed certs
+    encrypt: true,
+    trustServerCertificate: true
   }
 }
 
@@ -22,7 +22,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: '*' } });
 
-app.use(cors()); // Enable CORS for the Express application
+app.use(cors());
 app.use(express.json());
 
 //routes
@@ -37,10 +37,7 @@ app.use('/message', message);
 
 io.on('connection', (socket) => {
   console.log('A user connected.');
-
-  // Handle events or emit messages to clients
   socket.on('joinChat', (chatId) => {
-    // Join the room corresponding to the chat ID
     socket.join(chatId);
   });
 

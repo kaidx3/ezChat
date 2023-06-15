@@ -20,7 +20,7 @@ const Header = ({auth}) => {
                     </button>
                     <div>
                         <div className="content">
-                            <a className="link">Account</a>
+                            <a className="link" href="/account">Account</a>
                             <a className="link" href="/home">Home</a>
                             <button className="link" onClick={logout}>Logout</button>
                         </div>

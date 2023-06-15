@@ -87,7 +87,6 @@ const Conversation = ({ auth }) => {
     }, []);
 
     useEffect(() => {
-        // 👇️ scroll to bottom every time messages change
         bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 

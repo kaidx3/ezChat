@@ -23,6 +23,7 @@ import ResetPassword from './pages/authentication/reset-password';
 import Home from './pages/main/home';
 import CreateChat from './pages/main/create-chat';
 import Conversation from './pages/main/conversation';
+import Account from './pages/main/account';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -55,7 +56,11 @@ const router = createBrowserRouter([
   {
     path: "/conversation",
     element: <Conversation auth={auth}/>
-  }
+  },
+  {
+    path: "/account",
+    element: <Account auth={auth}/>
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

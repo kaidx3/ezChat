@@ -1,5 +1,5 @@
 import express from 'express';
-import { searchUsername, createAccount, searchUid } from '../services/userServices.js';
+import { searchUsername, createAccount, searchUid, resetEmail } from '../services/userServices.js';
 import { checkQueriesValid } from '../utility.js';
 let router = express.Router();
 
