@@ -1,2 +1,2 @@
 # ezChat
-A simple chat application built with a react.js client and an express.js API.
+A simple chat application built with a React.js client and an express.js API.
