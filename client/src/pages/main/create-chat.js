@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { createChat as createDbChat } from '../../api/chatApi';
-import { searchUsername } from "../../api/userApi";
+import { searchUid, searchUsername } from "../../api/userApi";
 
 const CreateChat = ({auth}) => {
     const [errors, setErrors] = useState("");
@@ -31,10 +31,22 @@ const CreateChat = ({auth}) => {
         if (name.length > 80) {
             setCreateErrors("Chat name must be 80 characters or less.");
         } else {
-            const updatedMembers = [...members, { username: "username", uid: currentUid }];
+            let username = await searchUid(currentUid)
+            username = username[0].Username
+            console.log(username)
+            const updatedMembers = [...members, { username: username, uid: currentUid }];
+
+            let chatUsernames = ""
+            updatedMembers.forEach(member => {
+                if (member.username != "username") {
+                    chatUsernames += `${member.username}, `
+                }
+            })
+            chatUsernames = chatUsernames.slice(0, -2)
+
             setMembers(updatedMembers);
-            await createDbChat(updatedMembers, name);
-            window.location.href = "/home"
+            await createDbChat(updatedMembers, name, chatUsernames);
+            //window.location.href = "/home"
         }
     };
 

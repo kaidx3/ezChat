@@ -352,6 +352,10 @@ code {
   max-width: unset;
 }
 
+#messages {
+  margin-bottom: 4rem;
+}
+
 @media screen and (min-width: 800px) {
   .header .content {
     z-index: 10;
@@ -383,4 +387,31 @@ code {
   #menu-toggle {
     visibility: hidden;
   }
+}
+
+.message-card {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-bottom: 2px solid rgb(243, 243, 243);
+}
+
+.current-user h3 {
+  display: inline-block;
+  margin-bottom: 0px;
+  border-radius: 0.25rem;
+  background-color: rgb(243, 243, 243);
+  padding: 0.25rem;
+}
+
+.other-user h3 {
+  display: inline-block;
+  margin-bottom: 0px;
+  border-radius: 0.25rem;
+  background-color: rgb(193, 201, 255);
+  padding: 0.25rem;
+}
+
+.date-text {
+  font-size: small;
+  font-weight: 500;
 }

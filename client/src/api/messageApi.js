@@ -6,4 +6,23 @@ const getLatestMessage = async (chatID) => {
     return data;
 }
 
-export { getLatestMessage }
+const sendMessage = async (message) => {
+    let results = await fetch(`${apiLink}/message/sendMessage`, {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(message)
+    });
+    let data = results.json();
+    return data;
+}
+
+const getAllMessagesChatID = async (chatID) => {
+    let results = await fetch(`${apiLink}/message/getAllMessagesChatID/?chatID=${chatID}`);
+    let data = results.json();
+    return data;
+}
+
+export { getLatestMessage, sendMessage, getAllMessagesChatID }

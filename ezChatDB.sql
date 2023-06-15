@@ -5,9 +5,12 @@ CREATE TABLE Account (
 
 CREATE TABLE Chat (
     ChatID INT IDENTITY(1, 1) PRIMARY KEY,
+    ChatUsernames VARCHAR(MAX) NOT NULL, 
     ChatName VARCHAR(80) NULL,
     LastMessageSentDate DATETIME NULL,
     DateCreated DATETIME NOT NULL,
+    LatestEventDate DATETIME NOT NULL,
+    LatestMessage VARCHAR(MAX) NOT NULL,
 )
 
 CREATE TABLE ChatAccount (
@@ -18,21 +21,29 @@ CREATE TABLE ChatAccount (
 
 CREATE TABLE Message (
     MessageID INT IDENTITY(1, 1) PRIMARY KEY,
+    AccountID VARCHAR(200) FOREIGN KEY REFERENCES Account(AccountID) NOT NULL,
+    AccountUsername VARCHAR(40) NOT NULL,
     MessageContent VARCHAR(MAX),
     ChatID INT FOREIGN KEY REFERENCES Chat(ChatID) NOT NULL,
     TimeSent DATETIME NOT NULL,
 )
 
-SELECT * FROM ChatAccount WHERE ChatID = 22
+DROP TABLE Message
+
+SELECT * FROM ChatAccount
 SELECT * FROM Account
 SELECT * FROM Chat
+SELECT * FROM Message
+
+DROP TABLE ChatAccount
+DROP TABLE Chat
 
 SELECT MessageContent, MAX(TimeSent) 'TimeSent' FROM Message
 WHERE ChatID = 21
 GROUP BY MessageContent, ChatID
 
-insert into Message (MessageContent, ChatID, TimeSent)
-VALUES ('reeeeeeeeeeeeeeeeeeeeeeeeeeeee', 21, GETDATE())
+insert into Message (MessageContent, ChatID, TimeSent, AccountUsername, AccountID)
+VALUES ('reeeeeeeeeeeeeeeeeeeeeeeeeeeee', 9, GETDATE(), 'asdasdawdads', '0uXtFibtEQZxTsy80zCBTzMy9im1')
 
 
  

@@ -1,11 +1,11 @@
 import sql from 'mssql'
 
-const createChat = async (pool, members, name) => {
+const createChat = async (pool, members, name, usernames) => {
     try {
         let connection = pool.request();
         let id = await connection.query`
-        INSERT INTO Chat (ChatName, DateCreated)
-        VALUES (${name}, GETDATE())
+        INSERT INTO Chat (ChatName, DateCreated, ChatUsernames, LatestEventDate, LatestMessage)
+        VALUES (${name}, GETDATE(), ${usernames}, GETDATE(), ${""})
         SELECT Scope_Identity()
         `
         const table = new sql.Table('ChatAccount');
@@ -15,20 +15,19 @@ const createChat = async (pool, members, name) => {
         members.forEach(member => table.rows.add(member.uid, id.recordset[0]['']));
         await connection.bulk(table)
     } catch (err) {
+        console.log(err)
     }
 }
 
 const getChatsUid = async (pool, uid) => {
     try {
-        let chats = []
-
         let connection = pool.request();
         let chatIds = await connection.query`
         SELECT ChatID
         FROM ChatAccount
         WHERE AccountID = ${uid}
         `
-        if (chatIds.length < 1) {
+        if (chatIds.recordset.length < 1) {
             return []
         }
 
@@ -37,40 +36,33 @@ const getChatsUid = async (pool, uid) => {
         chatIds.recordset.forEach(record => {
             whereclause += `ChatID = ${record.ChatID} OR `
         })
-        whereclause = whereclause.slice(0, whereclause.length - 4)
-        let query = `
-        SELECT AccountID, ChatID
-        FROM ChatAccount
-        WHERE ${whereclause}
-        `
-        let members = await connection.query(query)
 
-        query = `
-        SELECT ChatID, ChatName, DateCreated, LastMessageSentDate
+        whereclause = whereclause.slice(0, -4)
+
+        let query = `
+        SELECT ChatID, ChatName, DateCreated, LatestEventDate, LatestMessage, LastMessageSentDate, ChatUsernames
         FROM Chat
         WHERE ${whereclause}
         `
-        let extraChatInfo = await connection.query(query)
 
-        chatIds.recordset.forEach((chatId) => {
-            let chat = {
-              chatID: chatId.ChatID,
-              extraChatInfo,
-              members,
-            };
-            let mems = members.recordset
-              .filter((member) => member.ChatID === chatId.ChatID)
-              .map((member) => member.AccountID);
-            chat.members = mems;
+        let chats = await connection.query(query)
 
-            let info = extraChatInfo.recordset.filter(chat => chat.ChatID === chatId.ChatID)
-            chat.extraChatInfo = info
-
-            chats.push(chat);
-          });
-        return chats
+        return chats.recordset
     } catch (err) {
     }
 }
 
-export {createChat, getChatsUid}
+const getChatNameChatID = async (pool, chatID) => {
+    try {
+        let connection = pool.request();
+        let data = await connection.query`
+        SELECT ChatName, ChatUsernames
+        FROM Chat
+        WHERE ChatID = ${chatID}
+        `
+        return data  
+    } catch (err) {
+    }
+}
+
+export {createChat, getChatsUid, getChatNameChatID}

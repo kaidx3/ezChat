@@ -1,13 +1,13 @@
 import { apiLink } from "./apiLink";
 
-const createChat = async (members, name) => {
+const createChat = async (members, name, usernames) => {
     let results = await fetch(`${apiLink}/chat/createChat`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ members: members, name: name })
+        body: JSON.stringify({ members: members, name: name, usernames: usernames })
     });
     let data = results.json();
     return data;
@@ -19,4 +19,10 @@ const getChatsUid = async (uid) => {
     return data;
 }
 
-export {createChat, getChatsUid}
+const getChatNameChatID = async (chatID) => {
+    let results = await fetch(`${apiLink}/chat/getChatNameChatID/?chatID=${chatID}`);
+    let data = results.json();
+    return data;
+}
+
+export {createChat, getChatsUid, getChatNameChatID}

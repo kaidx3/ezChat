@@ -21,7 +21,6 @@ const Header = ({auth}) => {
                     <div class="content">
                         <a class="link">Account</a>
                         <a class="link" href="/home">Home</a>
-                        <a class="link">Messages</a>
                         <button class="link" onClick={logout}>Logout</button>
                     </div>
                 </div>
