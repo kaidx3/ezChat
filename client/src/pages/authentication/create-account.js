@@ -44,34 +44,34 @@ const CreateAccount = ({auth}) => {
     }
 
     return (
-    <div class="centered-mw-40rem">
-        <h1 class="text-center mt-10rem">Create Account</h1>
+    <div className="centered-mw-40rem">
+        <h1 className="text-center mt-10rem">Create Account</h1>
         {
             createSuccess ?
             <div></div>
             :
             <div>
-                <p class="display-error">{errors}</p>
+                <p className="display-error">{errors}</p>
             </div>
         }
 
-        <div class="text-center mt-3rem">
-            <label class="large-label" for="email">Email</label>
-            <input class="large-input" type="text" id="email" name="email"></input>
+        <div className="text-center mt-3rem">
+            <label className="large-label" htmlFor="email">Email</label>
+            <input className="large-input" type="text" id="email" name="email"></input>
 
-            <label class="large-label" for="username">Username</label>
-            <input class="large-input" type="text" id="username" name="username"></input>
+            <label className="large-label" htmlFor="username">Username</label>
+            <input className="large-input" type="text" id="username" name="username"></input>
 
-            <label class="large-label" for="password">Password</label>
-            <input class="large-input" type="password" id="password" name="password"></input>
+            <label className="large-label" htmlFor="password">Password</label>
+            <input className="large-input" type="password" id="password" name="password"></input>
         </div>
 
-        <div class="text-center">
-            <div class="w-100">
-                <button class="large-button primary-button" href="/create-account" onClick={createAccount}>Continue</button>
+        <div className="text-center">
+            <div className="w-100">
+                <button className="large-button primary-button" href="/create-account" onClick={createAccount}>Continue</button>
             </div>
-            <div class="w-100">
-                <a class="large-button" href="/login">Log In</a>
+            <div className="w-100">
+                <a className="large-button" href="/login">Log In</a>
             </div>
         </div>
     </div>

@@ -51,23 +51,23 @@ const CreateChat = ({auth}) => {
     };
 
     return (
-    <div class="container">
-        <div class="centered-mw-40rem">
-            <h1 class="text-center">Create Chat</h1>
+    <div className="container">
+        <div className="centered-mw-40rem">
+            <h1 className="text-center">Create Chat</h1>
 
-            <div class="text-center">
-                <h2 class="label-header mx-0">Add Members</h2>
+            <div className="text-center">
+                <h2 className="label-header mx-0">Add Members</h2>
                 
                 {
                     errors == "" ?
                     <div></div>
                     :
                     <div>
-                        <p class="display-error">{errors}</p>
+                        <p className="display-error">{errors}</p>
                     </div>
                 }
 
-                <div class="member-list flex justify-center gap-1 centered-mw-40rem flex-wrap" id="member-list">
+                <div className="member-list flex justify-center gap-1 centered-mw-40rem flex-wrap" id="member-list">
 
                 {
                     members.map((member) => <p>{member.username}</p>)
@@ -76,37 +76,37 @@ const CreateChat = ({auth}) => {
                 </div>
             </div>
 
-            <div class="centered flex">
-                <label for="username" class="visually-hidden">Username</label>
-                <input class="large-input" placeholder="Username" id="username" name="username"></input>
+            <div className="centered flex">
+                <label htmlFor="username" className="visually-hidden">Username</label>
+                <input className="large-input" placeholder="Username" id="username" name="username"></input>
             </div>
 
-            <div class="centered flex">
-                <button class="large-button primary-button" onClick={addMember}>Add</button>
+            <div className="centered flex">
+                <button className="large-button primary-button" onClick={addMember}>Add</button>
             </div>
 
-            <h2 class="label-header text-center mx-0">Name Chat</h2>
+            <h2 className="label-header text-center mx-0">Name Chat</h2>
 
             {
                 createErrors == "" ?
                 <div></div>
                 :
                 <div>
-                    <p class="display-error">{createErrors}</p>
+                    <p className="display-error">{createErrors}</p>
                 </div>
             }
 
-            <p class="text-center">Leave blank to display names.</p>
-            <div class="centered flex">
-                <label for="name" class="visually-hidden">Name</label>
-                <input class="large-input" placeholder="Name" id="name" name="name"></input>
+            <p className="text-center">Leave blank to display names.</p>
+            <div className="centered flex">
+                <label htmlFor="name" className="visually-hidden">Name</label>
+                <input className="large-input" placeholder="Name" id="name" name="name"></input>
             </div>
 
-            <div class="centered flex">
-                <button class="large-button primary-button" id="create-chat-btn" onClick={createChat}>Create</button>
+            <div className="centered flex">
+                <button className="large-button primary-button" id="create-chat-btn" onClick={createChat}>Create</button>
             </div>
-            <div class="centered flex">
-                <a class="large-button secondary-button" href="/home">Cancel</a>
+            <div className="centered flex">
+                <a className="large-button secondary-button" href="/home">Cancel</a>
             </div>
         </div>
     </div>

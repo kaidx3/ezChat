@@ -22,35 +22,35 @@ const ResetPassword = ({auth}) => {
     }
 
     return (
-    <div class="centered-mw-40rem">
-        <h1 class="text-center mt-10rem">Reset Password</h1>
+    <div className="centered-mw-40rem">
+        <h1 className="text-center mt-10rem">Reset Password</h1>
 
         {
             resetClicked ?
                 resetSuccess ?
                     <div>
-                        <p class="display-info">{info}</p>
+                        <p className="display-info">{info}</p>
                     </div>
                 :
                     <div>
-                        <p class="display-error">{errors}</p>
+                        <p className="display-error">{errors}</p>
                     </div>
             :
             <div>
             </div>
         }
 
-        <div class="text-center mt-3rem">
-            <label class="large-label" for="email">Email</label>
-            <input class="large-input" type="text" id="email" name="email"></input>
+        <div className="text-center mt-3rem">
+            <label className="large-label" htmlFor="email">Email</label>
+            <input className="large-input" type="text" id="email" name="email"></input>
         </div>
 
-        <div class="text-center">
-            <div class="w-100">
-                <button class="large-button primary-button" href="/create-account" onClick={resetPassword}>Continue</button>
+        <div className="text-center">
+            <div className="w-100">
+                <button className="large-button primary-button" href="/create-account" onClick={resetPassword}>Continue</button>
             </div>
-            <div class="w-100">
-                <a class="large-button" href="/login">Log In</a>
+            <div className="w-100">
+                <a className="large-button" href="/login">Log In</a>
             </div>
         </div>
     </div>

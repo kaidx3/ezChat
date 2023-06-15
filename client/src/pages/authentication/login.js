@@ -37,34 +37,34 @@ const Login = ({auth}) => {
     }
 
     return (
-        <div class="centered-mw-40rem">
-            <h1 class="text-center mt-10rem">Log In</h1>
+        <div className="centered-mw-40rem">
+            <h1 className="text-center mt-10rem">Log In</h1>
 
             {
             loginSuccess ?
             <div></div>
             :
             <div>
-                <p class="display-error">{errors}</p>
+                <p className="display-error">{errors}</p>
             </div>
             }   
 
-            <div class="text-center mt-3rem">
-            <label class="large-label" for="email">Email</label>
-            <input class="large-input" type="text" id="email" name="email"></input>
+            <div className="text-center mt-3rem">
+            <label className="large-label" htmlFor="email">Email</label>
+            <input className="large-input" type="text" id="email" name="email"></input>
 
-            <label class="large-label" for="password">Password</label>
-            <input class="large-input" type="password" id="password" name="password"></input>
+            <label className="large-label" htmlFor="password">Password</label>
+            <input className="large-input" type="password" id="password" name="password"></input>
             </div>
-            <div class="text-center">
-                <div class="w-100">
-                    <button class="large-button primary-button" href="/create-account" onClick={login}>Continue</button>
+            <div className="text-center">
+                <div className="w-100">
+                    <button className="large-button primary-button" href="/create-account" onClick={login}>Continue</button>
                 </div>
-                <div class="w-100">
-                    <a class="large-button" href="/create-account">Create Account</a>
+                <div className="w-100">
+                    <a className="large-button" href="/create-account">Create Account</a>
                 </div>
-                <div class="w-100">
-                <a class="bold-link" href="/reset-password">Reset Password</a>
+                <div className="w-100">
+                <a className="bold-link" href="/reset-password">Reset Password</a>
             </div>
             </div>
         </div>

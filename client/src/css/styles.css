@@ -195,6 +195,12 @@ code {
   position: relative;
 }
 
+#header-container {
+  position: sticky;
+  top: 0;
+  z-index: 5000;
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;
