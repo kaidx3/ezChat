@@ -358,6 +358,7 @@ code {
 }
 
 #messageInput {
+  color: black;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -414,8 +415,8 @@ code {
   margin-bottom: 1rem;
   vertical-align: middle;
   text-decoration: none;
-  padding-top: 0.2rem;
-  text-indent: 10px;
+  border: none;
+  padding: 0.2rem;
   font-weight: 500;
   font-size: small;
   background-color: white;
