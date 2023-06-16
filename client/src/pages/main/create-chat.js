@@ -46,6 +46,7 @@ const CreateChat = ({auth}) => {
 
             setMembers(updatedMembers);
             await createDbChat(updatedMembers, name, chatUsernames);
+            window.location.href = "/home";
         }
     };
 

@@ -31,6 +31,9 @@ const CreateAccount = ({auth}) => {
                 else if (err.message.includes("auth/invalid-email")) {
                     setErrors("Invalid email.");
                 }
+                else if (err.message.includes("auth/weak-password")) {
+                    setErrors("Password must be at least 6 characters.");
+                }
             }
         }
         else if (username.length < 2 && email != "" && password != "" && username != "") {
