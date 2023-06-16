@@ -19,9 +19,16 @@ const CreateAccount = ({auth}) => {
             }
             try {
                 const user = await createUserWithEmailAndPassword(auth, email, password);
-                await createAcountDB(user.user.uid, username);
-                user.user.displayName = username;
-                window.location.href = "/home";
+                try {
+                    console.log(22222)
+                    await createAcountDB(user.user.uid, username);
+                    user.user.displayName = username;
+                    window.location.href = "/home";
+                }
+                catch (err) {
+                    console.log(err)
+                }
+
             }
             catch (err) {
                 setCreateSuccess(false);

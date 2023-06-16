@@ -15,7 +15,9 @@ const createAccount = async (uid, username) => {
         },
         body: JSON.stringify({ uid: uid, username: username })
     })
+    console.log(results)
     let data = results.json();
+    console.log(data)
     return data;
 }
 
