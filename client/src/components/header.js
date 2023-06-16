@@ -1,6 +1,16 @@
 import { signOut } from "firebase/auth"
+import { leaveChat } from "../api/chatApi";
 
 const Header = ({auth}) => {
+    let params = new URLSearchParams(window.location.search);
+    let chatID = params.get("chatId");
+
+    const deleteChat = async () => {
+        let uid = auth.currentUser.uid
+        await leaveChat(uid, chatID);
+        window.location.href = "/home";
+    }
+
     const toggleVisibility = () => {
         console.log(document.querySelector(".header .content"))
         document.querySelector(".header .content").classList.toggle("visible")
@@ -20,6 +30,15 @@ const Header = ({auth}) => {
                     </button>
                     <div>
                         <div className="content">
+
+                            {
+                                chatID != "" && chatID != undefined && chatID != "undefined" && chatID != null ?
+                                <button className="link red" onClick={deleteChat}>Delete Opened Chat</button>
+                                :
+                                <div/>
+                                
+                            }
+
                             <a className="link" href="/account">Account</a>
                             <a className="link" href="/home">Home</a>
                             <button className="link" onClick={logout}>Logout</button>

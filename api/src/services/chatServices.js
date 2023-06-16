@@ -65,4 +65,16 @@ const getChatNameChatID = async (pool, chatID) => {
     }
 }
 
-export {createChat, getChatsUid, getChatNameChatID}
+const leaveChat = async (pool, uid, chatID) => {
+    try {
+        let connection = pool.request();
+        let data = await connection.query`
+        DELETE FROM ChatAccount
+        WHERE AccountID = ${uid} AND ChatID = ${chatID}
+        `
+        return data  
+    } catch (err) {
+    }
+}
+
+export {createChat, getChatsUid, getChatNameChatID, leaveChat}

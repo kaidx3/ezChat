@@ -267,6 +267,8 @@ code {
   border: none;
   padding: 0px;
   cursor: pointer;
+  background-color: rgba(0,0,0,0);
+  line-height: 1.5rem;
 }
 
 .header p {
@@ -357,6 +359,7 @@ code {
   justify-content: center;
   max-width: unset;
   background-color: white;
+  width: 100%;
 }
 
 #messages {
@@ -413,6 +416,10 @@ code {
   align-items: end;
 }
 
+.red {
+  color: red !important;
+}
+
 @media screen and (min-width: 800px) {
   .header .content {
     z-index: 10;
@@ -439,6 +446,7 @@ code {
     height: 100%;
     display: flex; 
     align-items: center;
+    background-color: rgba(0,0,0,0);
   }
 
   #menu-toggle {

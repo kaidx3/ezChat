@@ -25,4 +25,10 @@ const getChatNameChatID = async (chatID) => {
     return data;
 }
 
-export {createChat, getChatsUid, getChatNameChatID}
+const leaveChat = async (uid, chatID) => {
+    let results = await fetch(`${apiLink}/chat/leaveChat/?uid=${uid}&chatID=${chatID}`);
+    let data = results.json();
+    return data;
+}
+
+export {createChat, getChatsUid, getChatNameChatID, leaveChat}

@@ -30,13 +30,18 @@ CREATE TABLE Message (
 
 DROP TABLE Message
 
-SELECT * FROM ChatAccount
+SELECT * FROM ChatAccount WHERE ChatID = 20
 SELECT * FROM Account
 SELECT * FROM Chat
 SELECT * FROM Message
 
 DROP TABLE ChatAccount
 DROP TABLE Chat
+
+DELETE FROM Chat 
+DELETE FROM Account
+DELETE FROM Message 
+DELETE FROM ChatAccount
 
 SELECT MessageContent, MAX(TimeSent) 'TimeSent' FROM Message
 WHERE ChatID = 21

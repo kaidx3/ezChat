@@ -1,5 +1,5 @@
 import express from 'express';
-import { createChat, getChatsUid, getChatNameChatID } from '../services/chatServices.js';
+import { createChat, getChatsUid, getChatNameChatID, leaveChat } from '../services/chatServices.js';
 import { checkQueriesValid } from '../utility.js'
 
 let router = express.Router();
@@ -36,6 +36,16 @@ router.get('/getChatNameChatID', async (req, res) => {
     let pool = req.app.get('db');
     let data = await getChatNameChatID(pool, req.query.chatID);
     res.json(data.recordset);
+})
+
+router.get('/leaveChat', async (req, res) => {
+    if (!checkQueriesValid([{value: req.query.chatID, num: true}, {value: req.query.uid, num: false}])) {
+        res.json([]);
+        return;
+    }
+    let pool = req.app.get('db');
+    await leaveChat(pool, req.query.uid, req.query.chatID);
+    res.json({success: true});
 })
 
 export {router};
