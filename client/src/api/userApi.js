@@ -13,7 +13,7 @@ const createAccount = async (uid, username) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ uid: "fdsfsdfsdfsdfsdfsdfsdf", username: "pwerwesdfsefsdfse" })
+        body: JSON.stringify({ uid: uid, username: username })
     });
     let data = results.json();
     return data;

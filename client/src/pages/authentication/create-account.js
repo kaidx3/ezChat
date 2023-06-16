@@ -25,7 +25,7 @@ const CreateAccount = ({auth}) => {
                     console.log(username)
                     await createAcountDB(user.user.uid, username);
                     user.user.displayName = username;
-                    window.location.href = "/home";
+                    //window.location.href = "/home";
                 }
                 catch (err) {
                     console.log(err)
