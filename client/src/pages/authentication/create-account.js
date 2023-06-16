@@ -14,6 +14,7 @@ const CreateAccount = ({auth}) => {
         if (email != "" && password != "" && username != "" && username.length >= 2) {
             let usernameSearch = await searchUsername(username);
             if (usernameSearch.length > 0) {
+                setCreateSuccess(false);
                 setErrors("Username already taken.");
                 return;
             }
