@@ -14,10 +14,14 @@ router.get('/searchUsername', async (req, res) => {
 })
 
 router.post('/createAccount', async (req, res) => {
+    console.log(3)
     if (!checkQueriesValid([{value: req.body.username, num: false}, {value: req.body.uid, num: false}])) {
         res.json([]);
         return;
     }
+    console.log(req.body)
+    console.log(req.body.uid)
+    console.log(req.body.username)
     let pool = req.app.get("db");
     await createAccount(pool, req.body.uid, req.body.username);
     res.json({ submitted: true });
