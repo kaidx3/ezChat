@@ -69,7 +69,7 @@ const Home = ({ auth }) => {
 
   useEffect(() => {
     const handleSearch = (event) => {
-      const search = event.target.value.toLowerCase();
+      const search = document.querySelector("#search-conversations").value.toLowerCase();
       const newChats = chats.filter((chat) => {
         const chatName = chat.ChatName && chat.ChatName.toLowerCase();
         const chatUsernames = chat.ChatUsernames && chat.ChatUsernames.toLowerCase();
@@ -122,7 +122,7 @@ const Home = ({ auth }) => {
         
       </div>
       <div id="new-chat-container" className="container">
-        <a className="small-button primary-button-noshadow" id="new-chat-btn" href="/create-chat">New</a>
+        <a className="small-button primary-button" id="new-chat-btn" href="/create-chat">New</a>
       </div>
     </div>
   );

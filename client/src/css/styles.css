@@ -7,6 +7,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #3b3b3b;
+  color: white;
 }
 
 code {
@@ -43,20 +45,23 @@ code {
 }
 
 .large-input {
+  color-scheme: dark;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   display: inline-block;
-  width: calc(15rem - 4px);
-  height: 2rem;
+  width: 15rem;
+  height: 2.25rem;
   border-radius: 0.25rem;
-  border: 2px solid rgb(235, 235, 235);
   margin-bottom: 1rem;
   vertical-align: middle;
   text-decoration: none;
+  border: none;
   padding: 0px;
   text-indent: 10px;
   font-weight: 500;
+  background-color: #565656;
+  box-shadow: 0px 2px 5px rgb(45, 45, 45);
 }
 
 .invisible-button {
@@ -78,7 +83,7 @@ code {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
-  color: black;
+  color: white;
   display: inline-block;
   width: 15rem;
   height: 2.5rem;
@@ -113,9 +118,9 @@ code {
 }
 
 .primary-button {
-  color: white;
-  background-color: rgb(88, 112, 250);
-  box-shadow: 0px 5px 10px rgb(211, 211, 211);
+  color: black;
+  background-color: #00d1ff;
+  box-shadow: 0px 2px 8px rgb(45, 45, 45);
 }
 
 .primary-button-noshadow {
@@ -125,20 +130,15 @@ code {
 }
 
 .primary-button:active, .primary-button:focus, .primary-button:hover {
-  background-color: rgb(130, 149, 255);
+  background-color: #00d0ffcf;
 }
 
 .secondary-button {
-  color: black;
-  background-color: rgb(235, 235, 235);
-}
-
-.secondary-button:active, .secondary-button:focus, .secondary-button:hover {
-  background-color: rgb(243, 243, 243);
+  color: white;
 }
 
 .bold-link {
-  color: black;
+  color: white;
   font-weight: 500;
   text-decoration: none;
 }
@@ -189,9 +189,9 @@ code {
 .header {
   z-index: 100;
   font-size: large;
-  background-color: rgb(243, 243, 243);
+  background-color: #494949;
   padding: 0.75rem;
-  box-shadow: 0px 5px 10px rgb(211, 211, 211);
+  box-shadow: 0px 5px 10px rgb(45, 45, 45);
   position: relative;
 }
 
@@ -215,6 +215,8 @@ code {
 
 .header svg {
   height: 1.5rem;
+  fill: white;
+  background-color: rgba(0,0,0,0);
 }
 
 .align-right {
@@ -236,8 +238,8 @@ code {
   position: absolute;
   top: 3rem;
   left: 0rem;
-  background-color: rgb(243, 243, 243);
-  box-shadow: 0px 12px 10px -10px rgb(211, 211, 211);
+  box-shadow: 0px 12px 10px -10px rgb(45, 45, 45);
+  background-color: #494949;
   max-height: 0rem;
   overflow: hidden;
   visibility: hidden;
@@ -251,7 +253,7 @@ code {
 }
 
 .unstyled-link {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -262,7 +264,7 @@ code {
   font-size: medium;
   font-weight: 500;
   margin-bottom: 1rem;
-  color: black;
+  color: white;
   text-decoration: none;
   border: none;
   padding: 0px;
@@ -278,14 +280,14 @@ code {
 }
 
 .chat-display-card {
-  background-color: rgb(193, 201, 255);
+  background-color: #6f6f6f;
   padding: 1rem;
   border-radius: 0.5rem;
   margin: auto;
   width: 80%;
   max-width: 40rem;
   margin-bottom: 1rem;
-  box-shadow: 0px 5px 10px rgb(211, 211, 211);
+  box-shadow: 0px 5px 10px rgb(45, 45, 45);
 }
 
 .chat-display-card p {
@@ -339,6 +341,10 @@ code {
   gap: 1rem;
 }
 
+#menu-toggle {
+  background-color: rgba(0,0,0,0);
+}
+
 .chat-display-card h2 {
   white-space: nowrap;
   overflow: hidden;
@@ -358,7 +364,7 @@ code {
   right: 0;
   justify-content: center;
   max-width: unset;
-  background-color: white;
+  background-color: #3b3b3b;
   width: 100%;
 }
 
@@ -370,22 +376,25 @@ code {
 .message-card {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  border-bottom: 2px solid rgb(243, 243, 243);
+  border-bottom: 2px solid rgb(55, 55, 55);
 }
 
 .current-user h3 {
   display: inline-block;
   margin-bottom: 0px;
   border-radius: 0.25rem;
-  background-color: rgb(243, 243, 243);
+  background-color: #6f6f6f;
   padding: 0.25rem;
+  margin-bottom: 5px;
 }
 
 .other-user h3 {
+  color: black;
   display: inline-block;
   margin-bottom: 0px;
   border-radius: 0.25rem;
-  background-color: rgb(193, 201, 255);
+  background-color: #00d1ff;
+  margin-bottom: 5px;
   padding: 0.25rem;
 }
 
@@ -399,10 +408,9 @@ code {
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   display: inline-block;
-  width: calc(15rem - 4px);
-  min-height: 2rem;
+  width: 15rem;
+  min-height: 2.25rem;
   border-radius: 0.25rem;
-  border: 2px solid rgb(235, 235, 235);
   margin-bottom: 1rem;
   vertical-align: middle;
   text-decoration: none;
@@ -410,6 +418,8 @@ code {
   text-indent: 10px;
   font-weight: 500;
   font-size: small;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgb(45, 45, 45);
 }
 
 .bottom {
