@@ -19,8 +19,10 @@ const sqlConfig = {
 const pool = new sql.ConnectionPool(sqlConfig);
 const app = express();
 
-const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: '*' } });
+const expressServer = http.createServer(app);
+const socketIOServer = http.createServer();
+
+const io = new Server(socketIOServer, { cors: { origin: '*' } });
 
 app.use(cors());
 app.use(express.json());
@@ -46,13 +48,13 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(5000, async () => {
+socketIOServer.listen(5000, async () => {
   await pool.connect();
   app.set('db', pool);
   app.set('socketio', io);
   console.log('Socket.IO server listening on port 5000.');
 });
 
-app.listen(3000, () => {
+expressServer.listen(3000, () => {
   console.log('Express application listening on port 3000.');
 });
