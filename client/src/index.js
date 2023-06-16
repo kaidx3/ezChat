@@ -74,9 +74,9 @@ root.render(
 //checks if user is logged in or not
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // if (window.location.pathname == "/" || window.location.pathname == "/login" || window.location.pathname == "/create-account") {
-    //   window.location.href = "/home";
-    // }
+    if (window.location.pathname == "/") {
+      window.location.href = "/home";
+    }
   } else {
     if (window.location.pathname != "/" && window.location.pathname != "/login" && window.location.pathname != "/create-account" && window.location.pathname != "/reset-password") {
       window.location.href = "/";
