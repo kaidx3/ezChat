@@ -20,6 +20,7 @@ const createAccount = async (uid, username) => {
         })
     }
     catch (err) {
+        console.log("ERRROCCURED")
         console.log(err)
     }
     console.log(results)
