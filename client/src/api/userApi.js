@@ -12,7 +12,7 @@ const createAccount = async (uid, username) => {
     let link = `${apiLink}/user/createAccount`
     console.log(link)
     try {
-        results = await fetch(`${apiLink}/user/link`, {
+        results = await fetch(link, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
