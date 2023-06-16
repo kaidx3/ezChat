@@ -8,14 +8,20 @@ const searchUsername = async (username) => {
 
 const createAccount = async (uid, username) => {
     console.log(3333333333333)
-    let results = await fetch(`${apiLink}/user/createAccount`, {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ uid: uid, username: username })
-    })
+    let results = "unset yet"
+    try {
+        results = await fetch(`${apiLink}/user/createAccount`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ uid: uid, username: username })
+        })
+    }
+    catch (err) {
+        console.log(err)
+    }
     console.log(results)
     let data = results.json();
     console.log(data)
