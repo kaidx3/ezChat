@@ -43,6 +43,10 @@ io.on('connection', (socket) => {
     socket.join(chatId);
   });
 
+  socket.on('joinUpdatesChannel', (userid) => {
+    socket.join(userid);
+  });
+
   socket.on('disconnect', () => {
     console.log('A user disconnected.');
   });

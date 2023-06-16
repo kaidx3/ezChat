@@ -33,7 +33,6 @@ const CreateChat = ({auth}) => {
         } else {
             let username = await searchUid(currentUid)
             username = username[0].Username
-            console.log(username)
             const updatedMembers = [...members, { username: username, uid: currentUid }];
 
             let chatUsernames = ""

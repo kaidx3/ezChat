@@ -20,8 +20,11 @@ router.post('/sendMessage', async (req, res) => {
         return;
     }
     let pool = req.app.get("db");
-    await sendMessage(pool, req.body.content, req.body.sentBy, req.body.chatID, req.body.username);
+    let data = await sendMessage(pool, req.body.content, req.body.sentBy, req.body.chatID, req.body.username);
     const io = req.app.get('socketio');
+    data.recordset.forEach(member => {
+        io.to(member.AccountID).emit('chatUpdate', { message: 'A chat has been updated' });
+    });
     io.to(req.body.chatID).emit('newMessage', { message: 'A new message has been added!' });
     res.json({ submitted: true });
 })

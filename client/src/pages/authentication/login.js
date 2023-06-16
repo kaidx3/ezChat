@@ -14,7 +14,6 @@ const Login = ({auth}) => {
                 window.location.href = "/home"
             }
             catch (err) {
-                console.log(err);
                 setLoginSuccess(false);
                 if (err.message.includes("auth/wrong-password")) {
                     setErrors("Invalid password.");

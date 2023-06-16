@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react'
 import { getChatsUid } from '../../api/chatApi'
+import { io } from 'socket.io-client';
+import { socketLink } from '../../data/socketLink.js'
+
+const socket = io(socketLink);
 
 const Home = ({ auth }) => {
   const [authLoaded, setAuthLoaded] = useState(false);
   const [chats, setChats] = useState([]);
+  const [displayChats, setDisplayChats] = useState([]);
 
   const options = {
     hour: '2-digit',
@@ -28,7 +33,7 @@ const Home = ({ auth }) => {
       });
 
       setChats(chats);
-      console.log(chats)
+      setDisplayChats(chats);
       return;
     }
   };
@@ -47,9 +52,47 @@ const Home = ({ auth }) => {
 
   useEffect(() => {
     if (authLoaded) {
+      socket.emit('joinUpdatesChannel', auth.currentUser.uid);
       getChatsData();
     }
   }, [authLoaded]);
+
+  useEffect(() => {
+      socket.on('chatUpdate', () => {
+        getChatsData();
+      });
+
+      return () => {
+        socket.off('chatUpdate');
+      };
+  }, []);
+
+  useEffect(() => {
+    const handleSearch = (event) => {
+      const search = event.target.value.toLowerCase();
+      const newChats = chats.filter((chat) => {
+        const chatName = chat.ChatName && chat.ChatName.toLowerCase();
+        const chatUsernames = chat.ChatUsernames && chat.ChatUsernames.toLowerCase();
+        return (
+          chatName && chatName.includes(search) ||
+          chatUsernames && chatUsernames.includes(search) ||
+          search === ""
+        );
+      });
+      setDisplayChats(newChats);
+    };
+  
+    const searchInput = document.querySelector("#search-conversations");
+    if (searchInput && chats) {
+      searchInput.addEventListener("input", handleSearch);
+    }
+  
+    return () => {
+      if (searchInput) {
+        searchInput.removeEventListener("input", handleSearch);
+      }
+    };
+  }, [chats]);
 
   return (
     <div className="container">
@@ -62,7 +105,7 @@ const Home = ({ auth }) => {
         </div>
 
         {
-          chats.map((chat, index) => {
+          displayChats.map((chat, index) => {
             return (
               <a className="unstyled-link" href={`/conversation/?chatId=${chat.ChatID}`} key={index}>
                 <div className="chat-display-card">

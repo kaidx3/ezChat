@@ -21,6 +21,9 @@ const sendMessage = async (pool, content, sentBy, chatID, username) => {
         UPDATE Chat
         SET LatestEventDate = GETDATE(), LatestMessage = ${content}
         WHERE ChatID = ${chatID};
+
+        SELECT * FROM ChatAccount
+        WHERE ChatID = ${chatID}
         `;
         return data;
     } catch (err) {

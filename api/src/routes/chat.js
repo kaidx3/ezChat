@@ -11,6 +11,10 @@ router.post('/createChat', async (req, res) => {
     }
     let pool = req.app.get("db");
     await createChat(pool, req.body.members, req.body.name, req.body.usernames);
+    const io = req.app.get('socketio');
+    req.body.members.forEach(member => {
+        io.to(member.uid).emit('chatUpdate', { message: 'A chat has been updated' });
+    })
     res.json({ submitted: true });
 })
 

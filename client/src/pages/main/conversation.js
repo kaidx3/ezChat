@@ -26,7 +26,7 @@ const Conversation = ({ auth }) => {
     const [uid, setUid] = useState("");
 
     const sendMessage = async () => {
-        let messageContent = document.querySelector("#send-message-content").value;
+        let messageContent = document.querySelector("#send-message-content").innerText;
         let currentUserId = await auth.currentUser.uid;
         let username = await searchUid(currentUserId)
         username = username[0].Username
@@ -35,7 +35,7 @@ const Conversation = ({ auth }) => {
         }
 
         await sendDBMessage({ content: messageContent, sentBy: currentUserId, chatID: chatID, username: username });
-        document.querySelector("#send-message-content").value = "";
+        document.querySelector("#send-message-content").innerText = "";
     }
 
     const getMessagesData = async () => {
@@ -121,8 +121,13 @@ const Conversation = ({ auth }) => {
 
             <div ref={bottomRef} />
 
-            <div id="messageInput" className="flex centered">
-                <textarea type="text" className="large-input" placeholder="Message" id="send-message-content"></textarea>
+            <div id="messageInput" className="flex centered bottom">
+                <span 
+                id="send-message-content"
+                className="message-input" 
+                role="textbox" 
+                contentEditable="true">
+                </span>
                 <button className="small-button primary-button ms-1rem" onClick={sendMessage}>Send</button>
             </div>
         </div>
