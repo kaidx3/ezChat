@@ -9,8 +9,10 @@ const searchUsername = async (username) => {
 const createAccount = async (uid, username) => {
     console.log(3333333333333)
     let results = "unset yet"
+    let link = `${apiLink}/user/createAccount`
+    console.log(link)
     try {
-        results = await fetch(`${apiLink}/user/createAccount`, {
+        results = await fetch(`${apiLink}/user/link`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
