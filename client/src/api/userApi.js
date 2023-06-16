@@ -7,8 +7,9 @@ const searchUsername = async (username) => {
 }
 
 const createAccount = async (uid, username) => {
+    console.log(uid)
+    console.log(username)
     console.log(3333333333333)
-    console.log(link)
     let results = await fetch(`${apiLink}/user/createAccount`, {
         method: "POST",
         headers: {
